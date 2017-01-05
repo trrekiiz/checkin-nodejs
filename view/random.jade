@@ -1,0 +1,33 @@
+doctype transitional
+html(xmlns='http://www.w3.org/1999/xhtml')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    link(rel='stylesheet', href='http://josex2r.github.io/jQuery-SlotMachine/css/style.css', type='text/css', media='screen')
+    link(rel='stylesheet', href='http://josex2r.github.io/jQuery-SlotMachine/dist/jquery.slotmachine.css', type='text/css', media='screen')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+    script(type='text/javascript', src='http://josex2r.github.io/jQuery-SlotMachine/dist/jquery.slotmachine.js')
+    link(href='https://fonts.googleapis.com/css?family=Itim', rel='stylesheet')
+
+  body(style="font-family: 'Itim';background-color:#66D4FF")
+  #plane.content(style='text-align: center;font-size:250%;margin:0 auto;')
+    div.well
+      div
+        h1 ผู้โชคดี จากทั้งหมด #{checkinCount} คน
+      #textMachine(style='text-align: center;margin:0 auto;')
+        for row in rows
+          div(style='font-size:150%',class="text-center") #{row.RFID}
+    .btn-group.btn-group-justified.btn-group-randomize(role='group')
+    #randomizeButton.btn.btn-danger.btn-lg(type='button') Random
+    script.
+      $(document).ready(function(){
+      var random1 = $("#textMachine").slotMachine({
+      active	: 1,
+      delay	: 550
+      });
+      $("#randomizeButton").click(()=>{
+        random1.shuffle(10);
+      })
+      });
